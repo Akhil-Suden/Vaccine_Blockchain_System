@@ -1,41 +1,64 @@
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.4.22 <0.8.0;
 pragma abicoder v2;
 
 contract distibution {
+   mapping(uint => _VaccineType) public VaccineType;
+   struct _VaccineType{
+      string name;
+      uint VaccineID;   // each VaccineID corresponds to a different Vaccine's name
+      uint min;
+      uint max;
+      uint QtyOrd;
+    }
+    
     mapping(uint => _Vaccine) public Vaccine;
-struct _Vaccine{
-    string name;
-    uint count;
-    uint VaccineID; 
-    uint min;
-    uint max;
-    bool life;
-    uint[] TempData ;
-}
-  _Vaccine v1;
-
+    struct _Vaccine{
+       uint VaccineID;
+       uint BatchNo;
+       uint count;      // no of times temp was recorded
+       bool life;
+       uint[] TempData;
+    }
+    uint i=2;   //VaccineType ID
+    uint j=0;   //Total Qty Ordered, helps in giving different BatchID 
+ 
 function intialise() public{
-uint[] memory arr=new uint[](0);
-v1=_Vaccine("AstraZeneca/Oxford COVID-19 vaccine",0,1,2,8,true,arr);
-Vaccine[1]=v1;
-}  
+_VaccineType memory v1;
+v1=_VaccineType("AstraZeneca/Oxford COVID-19 vaccine",1,2,8,0);
+VaccineType[1]=v1;
+}    
+   
+function RegisterVaccine(string memory name_ , uint min_ , uint max_ ) public{
+      _VaccineType memory v;
+      v=_VaccineType(name_,i,min_,max_,0);
+      VaccineType[i++]=v;
+   } 
 
-function takevalue(uint ID, uint temp ) public{
-  //   if(Vaccine[ID].life==false)
-  //   revert();
-     (Vaccine[ID].TempData).push(temp);
-     Vaccine[ID].count+=1;
+function order(uint ID ,uint qty) public{
+for(uint i=0;i<qty;i++){
+ uint[] memory arr=new uint[](0);
+ Vaccine[i+j+1]=_Vaccine(ID,j+i+1 ,0,true,arr);
+}
+VaccineType[ID].QtyOrd+=qty;
+j+=qty;
+}
+
+function takevalue(uint BatchNo , uint temp ) public{
+//   if(Vaccine[ID].life==false)
+//   revert();
+     (Vaccine[BatchNo].TempData).push(temp);
+     Vaccine[BatchNo].count+=1;
      bool state;
-     if(temp>Vaccine[ID].max || temp<Vaccine[ID].min){
+     if(temp>VaccineType[Vaccine[BatchNo].VaccineID].max || temp<VaccineType[Vaccine[BatchNo].VaccineID].min){
        state=false;
      }
      else state=true;   
-     Vaccine[ID].life=Vaccine[ID].life&&state;  
+     Vaccine[BatchNo].life=Vaccine[BatchNo].life&&state;  
   }
   
 function getTemp(uint ID) public view returns (uint[] memory){
     return Vaccine[ID].TempData;
-}  
+  }  
+
 
 }
