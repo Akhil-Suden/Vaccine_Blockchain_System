@@ -1,7 +1,7 @@
 App = {
   web3Provider: null,
   contracts: {},
-  account: '0x0',
+  account: '0x98d35dA636c89b67857D3772Eb0c1407474d4300',
   initWeb3: async function() {
         if (window.ethereum) {
           App.web3Provider = window.ethereum;
@@ -40,7 +40,7 @@ initContract: function() {
   handleRecord: function(event) {
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
-        console.log(error);
+  //    alert(error);
       } else {
         App.account = accounts[0];
       }
@@ -48,9 +48,15 @@ initContract: function() {
     App.contracts.Vaccine.deployed().then(function(instance) {
       VaccineInstance = instance;
       return VaccineInstance.initialise();
-    });
+    }).then(function(result) {
+      var initialisedEvent = VaccineInstance.initialised();
+      alert("d")
+    }).catch(function(err){
+       alert(err);
+});  // alert(App.account)
 
   }
+
 };
 
 $(function() {
