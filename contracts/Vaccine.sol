@@ -2,6 +2,8 @@ pragma solidity >=0.4.22 <0.8.0;
 //pragma abicoder v2;
 
 contract Vaccine {
+   event initialised (string Name);
+
    mapping(uint => _VaccineType) public VaccineType;
    struct _VaccineType{
       string name;
@@ -26,6 +28,7 @@ function initialise() public{
 _VaccineType memory v1;
 v1=_VaccineType("AstraZeneca/Oxford COVID-19 vaccine",1,2,8,0);
 VaccineType[1]=v1;
+emit initialised(v1.name);
 }
 
 function RegisterVaccine(string memory name_ , uint min_ , uint max_ ) public{
