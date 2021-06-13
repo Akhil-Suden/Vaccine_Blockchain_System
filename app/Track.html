@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Track Vaccine</title>
+  <link rel=stylesheet href="../app/stylesheets/style.css">
+  <link rel=stylesheet href="../app/stylesheets/style2.css">
+  <script src="track.js"></script>
+</head>
+
+<body>
+  <div class="header"><a href="index.html">Vaccine Management System </a> </div>
+  <div class="row">
+    <div class="column bigcol">
+      <div class="row">
+        <div class="column smcol" style="width:75%;"> <h1>Track Vaccine </h1> </div>
+        <div class="column smcol" style="width:25%;"><img src="../app/pics/track.jfif" alt="Order" align: "right" width="100" height="100" ></div>
+      </div>
+      <div class="row">
+        <form action="">
+          <label for="batch" align: "center" >Vaccine Batch No: </label>
+          <input type="text" id="batch" name="batch"><br><br>
+          <input type="submit" id="submit" value="Track">
+        </form>
+      </div>
+    </div>
+
+    <div class="column bigcol" style="width:50%; padding-top:30px">
+      <table id="data">
+        <col width="30%">
+        <col width="70%">
+        <tr>
+          <th>Temperature (&#8451)</th>
+          <th>Timestamp </th>
+        </tr>
+      </table>        
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register Vaccine</title>
+  <link rel="stylesheet" href="../app/stylesheets/style.css">
+  <link rel="stylesheet" href="../app/stylesheets/style2.css">
+  <script src="register.js"></script>
+</head>
+
+<body>
+  <div class="header"><a href="index.html">Vaccine Management System </a> </div>
+  <div class="row">
+    <div class="column bigcol">
+      <div class="row">
+        <div class="column smcol" style="width:75%;"> <h1>Register Vaccine </h1> </div>
+        <div class="column smcol" style="width:25%;"><img src="../app/pics/register.png"
+          alt="Register" align: "right" width="100" height="100" ></div>
+        </div>
+        <div class="row">
+          <form action="">
+            <label for="vname" align: "center" >Vaccine name: </label>
+            <input type="text" id="vname" name="vname"><br><br>
+            <label for="min">Minimum Allowed Temprature: </label>
+            <input type="text" id="min" name="min"><br><br>
+            <label for="max">Maximum Allowed Temprature: </label>
+            <input type="text" id="max" name="max"><br><br>
+            <input type="submit" id="submit" value="Register">
+          </form>
+        </div>
+      </div>
+      <div class="column bigcol" style="width:50%; padding-top:30px">
+        <table id="data">
+          <col width="10%">
+          <col width="80%">
+          <col width="20%">
+          <tr>
+            <th>Vaccine ID</th>
+            <th>Vaccine name</th>
+            <th>Temperature range </th>
+          </tr>
+       <!--   <td>1</td>
+          <td>AstraZeneca/Oxford</td>
+          <td>2 to 8</td> -->
+        </table>
+
+      </div>
+    </div>
+
+  </body>
+  </html>
