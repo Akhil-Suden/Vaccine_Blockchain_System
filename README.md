@@ -13,5 +13,5 @@ We are using **Ganache** for deploying our contracts.
 For contract abstraction, install **@truffle/contract** package :   https://www.npmjs.com/package/@truffle/contract
 **$ npm install @truffle/contract**
 
-We are using **lite-server** for serving webapp :   https://www.npmjs.com/package/lite-server
+We are using **webpack-dev-server** for serving webapp :   https://webpack.js.org/configuration/dev-server/
 
