@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Order Vaccine</title>
-<link rel="stylesheet" href="../app/stylesheets/style.css">
+  <title>Order Vaccine</title>
+  <link rel="stylesheet" href="../app/stylesheets/style.css">
+  <link rel="stylesheet" href="../app/stylesheets/style2.css">
+  <script src="order.js"></script>
 </head>
 
 <body>
-<div class="header"><a href="index.html">Vaccine Management System </a> </div>
-<div class="row">
-  <div class="column bigcol">
-    <div class="row">
-   <div class="column smcol" style="width:75%;"> <h1>Order Vaccine </h1> </div>
-   <div class="column smcol" style="width:25%;"><img src="../app/pics/order.jpg" alt="Order" align: "right" width="100" height="100" ></div>
-</div>
-   <div class="row">
-<form action="">
-  <label for="vid" align: "center" >Vaccine ID: </label>
-  <input type="text" id="vid" name="vid"><br><br>
-  <label for="qty">Quantity: </label>
-  <input type="text" id="qty" name="qty"><br><br>
-  <input type="submit" value="Order">
-</form>
-</div>
+  <div class="header"><a href="index.html">Vaccine Management System </a> </div>
+  <div class="row">
+    <div class="column bigcol">
+      <div class="row">
+        <div class="column smcol" style="width:75%;"> <h1>Order Vaccine </h1> </div>
+        <div class="column smcol" style="width:25%;"><img src="../app/pics/order.jpg" alt="Order" align: "right" width="100" height="100" ></div>
+      </div>
+      <div class="row">
+        <form action="">
+          <label for="vid" align: "center" >Vaccine ID: </label>
+          <input type="text" id="vid" name="vid"><br><br>
+          <label for="qty">Quantity: </label>
+          <input type="text" id="qty" name="qty"><br><br>
+          <input type="button" id="submit" value="Order">
+        </form>
+      </div>
+    </div>
+    <div class="column bigcol" style="width:50%; padding-top:0px">
+      <h4 style="text-align: center">List of Vaccines </h4>
+      <table id="data">
+        <col width="5%">
+        <col width="85%">
+        <col width="5%">
+        <col width="5%">
+        <tr>
+          <th>Vaccine ID</th>
+          <th>Vaccine name</th>
+          <th>Temperature range </th>
+          <th>Quantity </th>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
 
 </body>
 </html>

@@ -19,20 +19,26 @@
         <form action="">
           <label for="batch" align: "center" >Vaccine Batch No: </label>
           <input type="text" id="batch" name="batch"><br><br>
-          <input type="submit" id="submit" value="Track">
+          <input type="button" id="submit" value="Track">
         </form>
+      </div>
+      <div>
+        <h4 id="batch1" style="text-align: left; padding-left: 70px" ></h4>
+        <h4 id="name" style="text-align: left; padding-left: 70px"></h4>
+        <h4 id="life" style="text-align: left; padding-left: 70px"></h4>
       </div>
     </div>
 
-    <div class="column bigcol" style="width:50%; padding-top:30px">
-      <table id="data">
+    <div id="record" class="column bigcol" style="width:50%; padding-top:0px; display:none">
+      <h4 id="heading" style="text-align: center"></h4>
+      <table id="data" ">
         <col width="30%">
         <col width="70%">
         <tr>
           <th>Temperature (&#8451)</th>
           <th>Timestamp </th>
         </tr>
-      </table>        
+      </table>
     </div>
   </div>
 

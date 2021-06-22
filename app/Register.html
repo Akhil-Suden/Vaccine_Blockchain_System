@@ -3,14 +3,13 @@
 <head>
   <title>Register Vaccine</title>
   <link rel="stylesheet" href="../app/stylesheets/style.css">
-  <link rel="stylesheet" href="../app/stylesheets/style2.css">
   <script src="register.js"></script>
 </head>
 
 <body>
   <div class="header"><a href="index.html">Vaccine Management System </a> </div>
   <div class="row">
-    <div class="column bigcol">
+    <div class="column bigcol" style:"border-style: solid;">
       <div class="row">
         <div class="column smcol" style="width:75%;"> <h1>Register Vaccine </h1> </div>
         <div class="column smcol" style="width:25%;"><img src="../app/pics/register.png"
@@ -24,27 +23,22 @@
             <input type="text" id="min" name="min"><br><br>
             <label for="max">Maximum Allowed Temprature: </label>
             <input type="text" id="max" name="max"><br><br>
-            <input type="submit" id="submit" value="Register">
+            <label for="qty">Total Quantity: </label>
+            <input type="text" id="qty" name="qty"><br><br>
+            <input type="button" id="submit" value="Register">
           </form>
         </div>
       </div>
-      <div class="column bigcol" style="width:50%; padding-top:30px">
-        <table id="data">
-          <col width="10%">
-          <col width="80%">
-          <col width="20%">
-          <tr>
-            <th>Vaccine ID</th>
-            <th>Vaccine name</th>
-            <th>Temperature range </th>
-          </tr>
-       <!--   <td>1</td>
-          <td>AstraZeneca/Oxford</td>
-          <td>2 to 8</td> -->
-        </table>
-
+      <div class="column bigcol" style="width:40%; padding-top:20px">
+        <h1>Add Quantity </h1><h6><br><br><br></h6>
+        <form action="">
+          <label for="vid1" align: "center" >Vaccine ID : </label>
+          <input type="text" id="vid1" name="vid"><br><br>
+          <label for="qty1">Quantity : </label>
+          <input type="text" id="qty1" name="qty"><br><br>
+          <input type="button" id="add" value="Add">
+        </form>
       </div>
     </div>
-
   </body>
   </html>

@@ -20,38 +20,33 @@ window.addEventListener('load', async () => {
             var abiFactory= JSON.stringify(Vaccine.abi)
             var abi=JSON.parse(abiFactory);
             var contract = web3.eth.contract(abi);
-            var addr='0xd278B4eF97999d7d49bF3bc6598e4613Bff0B928'
+            var addr='0x2Fb8C11A64d6902C9d03D396fD86E5A600934B0B'
 
-            $(document).on('click','#submit',function() {  //After user clicks Submit button
+            $(document).on
+            ('click','#submit',function() {  //After user clicks Submit button
               var instance = contract.at(addr);
               var estimatedGas = 3000000;
               var txnObject = {from: web3.eth.coinbase, gas: estimatedGas  }
-              var vname= web3.fromAscii(document.getElementById("vname").value)
+              var vname= document.getElementById("vname").value;
               var min = document.getElementById("min").value;
               var max = document.getElementById("max").value;
-              instance.RegisterVaccine.sendTransaction(vname,min,max,txnObject,function(result){
-                alert("ddddddddddd");
-                var userAddedEvent = instance.registered();
-                userAddedEvent.watch(async function(error, result){
+              var qty = document.getElementById("qty").value;
+              instance.register.sendTransaction(vname,min,max,qty,txnObject,function(error,result){
+                if (!error) {
+                  alert("Registration Succesfull");
+                }});
+              });
+
+              $(document).on
+              ('click','#add',function() {  //After user clicks Add button
+                var instance = contract.at(addr);
+                var estimatedGas = 3000000;
+                var txnObject = {from: web3.eth.coinbase, gas: estimatedGas  }
+                var vid= document.getElementById("vid1").value;
+                var qty = document.getElementById("qty1").value;
+                instance.addQty.sendTransaction(vid,qty,txnObject,function(error,result){
                   if (!error) {
-                    alert("ddddddddddd");
-                  }
+                    alert("Quantity Added Succesfully");
+                  }});
                 });
-                });
-
-              //    alert("Data stored on BlockChain successfully") ;
-               /* var table = document.getElementById("data");
-                  for (var j = 0; j < instance.i; j++) {
-                  var row = table.insertRow(1);
-                  var cell1 = row.insertCell(0);
-                  var cell2 = row.insertCell(1);
-                  var cell3 = row.insertCell(2);
-                  cell1.innerHTML = VaccineType[j].VaccineID;
-                  cell2.innerHTML = VaccineType[j].name;
-                  cell3.innerHTML = VaccineType[j].min+" to "+VaccineType[j].min;
-                  window.stop(); }  */
-
-          //    window.stop();
-            });
-
-          })
+              })
