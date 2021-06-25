@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
             var abiFactory= JSON.stringify(Vaccine.abi)
             var abi=JSON.parse(abiFactory);
             var contract = web3.eth.contract(abi);
-            var addr='0x2Fb8C11A64d6902C9d03D396fD86E5A600934B0B'
+            var addr='0x3DD443736Cc589fd4456B02f8E7f99E3e6f87883'
             var instance = contract.at(addr);
             var estimatedGas = 3000000;
             var txnObject = {
@@ -33,11 +33,14 @@ window.addEventListener('load', async () => {
                 var qty = document.getElementById("qty").value;
                 instance.order(vid,qty,txnObject,function(error, result){
                   if(!error){
-                    instance.j.call(function(err, res){
-                      const a=parseInt(res)+parseInt(qty);
-                      const b=parseInt(res)+parseInt(1);
-                      alert("Vaccines ordered from BatchNo "+b+" to "+a)});
-                      location.reload();
+                    setTimeout(function()
+                    {instance.j.call(function(err, res){
+                      if(!err){
+                      const a=parseInt(res)-parseInt(qty)+parseInt(1);
+                      const b=parseInt(res);
+                      alert("Vaccines ordered from BatchNo "+a+" to "+b)
+                      location.reload();}
+                    });},3000);
                     }
                   });
                 });
@@ -45,8 +48,8 @@ window.addEventListener('load', async () => {
                 function update_table(){
                   var table = document.getElementById("data");
                   instance.i.call(function(err, res){
-                    for (var j = 1; j <= res; j++){
-                      instance.VaccineType.call(j,function(err, res2){
+                    for (var l = 1; l <= res; l++){
+                      instance.VaccineType.call(l,function(err, res2){
                         var row = table.insertRow(-1);
                         var cell1 = row.insertCell(0);
                         var cell2 = row.insertCell(1);

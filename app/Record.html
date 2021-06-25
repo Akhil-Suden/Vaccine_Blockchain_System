@@ -2,30 +2,44 @@
 <html>
 
 <head>
-<title>Record Temperature</title>
-<link rel=stylesheet href="../app/stylesheets/style.css">
-<script src="record.js"></script>
+  <title>Record Temperature</title>
+  <link rel=stylesheet href="../app/stylesheets/style.css">
+  <link rel=stylesheet href="../app/stylesheets/style2.css">
+  <script src="record.js"></script>
 </head>
 
 <body>
-<div class="header"><a href="index.html">Vaccine Management System </a> </div>
-<div class="row">
-  <div class="column bigcol">
-    <div class="row">
-   <div class="column smcol" style="width:75%;"> <h1>Record Temperature </h1> </div>
-   <div class="column smcol" style="width:25%;"><img src="../app/pics/temp.jfif" alt="Record" align: "right" width="100" height="100" ></div>
-</div>
-   <div class="row">
-<form action="">
-  <label for="batch" align: "center" >Enter Vaccine Batch Number : </label>
-  <input type="text" id="batch" name="batch"><br><br>
-  <label for="batch" align: "center" >Enter Temperature : </label>
-  <input type="text" id="temp" name="temp"><br><br>
-  <input type="button" id="submit" value="Submit">
-</form>
-</div>
+  <div class="header"><a href="index.html">Vaccine Management System </a> </div>
+  <div class="row">
+    <div class="column bigcol">
+      <div class="row">
+        <div class="column smcol" style="width:75%;"> <h1>Record Temperature </h1> </div>
+        <div class="column smcol" style="width:25%;"><img src="../app/pics/temp.jfif" alt="Record" align: "right" width="100" height="100" ></div>
+      </div>
+      <div class="row">
+        <form action="">
+          <label for="batch" align: "center" >Enter Vaccine Batch Number : </label>
+          <input type="text" id="batch" name="batch"><br><br>
+          <label for="batch" align: "center" >Enter Temperature : </label>
+          <input type="text" id="temp" name="temp"><br><br>
+          <input type="button" id="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="column bigcol" style="width:50%; padding-top:0px">
+      <h4 style="text-align: center">Order History </h4>
+      <table id="data">
+        <col width="5%">
+        <col width="85%">
+        <col width="10%">
+        <tr>
+          <th>Vaccine ID</th>
+          <th>Vaccine name</th>
+          <th>Batch Numbers </th>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
 
 </body>
 

@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
             var abiFactory= JSON.stringify(Vaccine.abi)
             var abi=JSON.parse(abiFactory);
             var contract = web3.eth.contract(abi);
-            var addr='0x2Fb8C11A64d6902C9d03D396fD86E5A600934B0B'
+            var addr='0x3DD443736Cc589fd4456B02f8E7f99E3e6f87883'
 
             $(document).on
             ('click','#submit',function() {  //After user clicks Submit button
@@ -28,8 +28,8 @@ window.addEventListener('load', async () => {
               var estimatedGas = 3000000;
               var txnObject = {from: web3.eth.coinbase, gas: estimatedGas  }
               var vname= document.getElementById("vname").value;
-              var min = document.getElementById("min").value;
-              var max = document.getElementById("max").value;
+              const min = parseInt(document.getElementById("min").value);
+              const max = document.getElementById("max").value;
               var qty = document.getElementById("qty").value;
               instance.register.sendTransaction(vname,min,max,qty,txnObject,function(error,result){
                 if (!error) {

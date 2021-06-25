@@ -20,14 +20,15 @@ window.addEventListener('load', async () => {
             var abiFactory= JSON.stringify(Vaccine.abi)
             var abi=JSON.parse(abiFactory);
             var contract = web3.eth.contract(abi);
-            var addr='0x2Fb8C11A64d6902C9d03D396fD86E5A600934B0B';
+            var addr='0x3DD443736Cc589fd4456B02f8E7f99E3e6f87883';
+            var instance = contract.at(addr);
+            var estimatedGas = 3000000;
+            var txnObject = {
+              from: web3.eth.coinbase,
+              gas: estimatedGas  }
+            update_table();
 
             $(document).on('click','#submit',function() {  //After user clicks Submit button
-              var instance = contract.at(addr);
-              var estimatedGas = 3000000;
-              var txnObject = {
-                from: web3.eth.coinbase,
-                gas: estimatedGas  }
                 var batch= document.getElementById("batch").value
                 var temp = document.getElementById("temp").value;
                 var date = new Date();
@@ -36,9 +37,29 @@ window.addEventListener('load', async () => {
                 instance.setTemp(batch,temp,seconds,txnObject,function(error, result){
                   alert("Data stored on BlockChain successfully")
                   if(error)
-                  alert("error")
+                  alert("Enter valid BatchNo")
                 });
               });
+
+              function update_table(){
+                var table = document.getElementById("data");
+                instance.o.call(function(err, res){
+                  for (var j = 1; j <= res; j++){
+                    instance.ohistory.call(j-1,function(err, res2){
+                      var row = table.insertRow(-1);
+                      var cell1 = row.insertCell(0);
+                      var cell2 = row.insertCell(1);
+                      var cell3 = row.insertCell(2);
+                      cell1.innerHTML =res2[0];
+                      instance.VaccineType.call(res2[0],function(err, res3){
+                        cell2.innerHTML =res3[0];
+                      })
+                      const a=parseInt(res2[1])+parseInt(res2[2])-1;
+                      cell3.innerHTML =res2[1]+" to "+a;
+                    });
+                  }
+                });
+              }
 
 
             })
